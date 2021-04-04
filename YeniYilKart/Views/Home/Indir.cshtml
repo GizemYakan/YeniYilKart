@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Indir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Indir</h2>
+<div>
+    @foreach (var item in ViewData.Model)
+    {
+        @Html.ActionLink((string)item, "Indirilen", new { filename = item });
+        <br />
+    }
+</div>

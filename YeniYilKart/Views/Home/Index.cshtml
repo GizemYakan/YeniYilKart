@@ -1,0 +1,34 @@
+﻿@model List<Kart>
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+<div class="jumbotron" style="background-color:antiquewhite">
+    <h1 style="color:darkgreen; text-align:center;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Oluşturulmuş Kartlar</h1>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="card-title logo">@item.Baslik @item.AliciAd</h3>
+                </div>
+                <img width="400" src="@Url.Content($"~/images/{item.ResimAd}.png")" class="card-img-bottom" alt="...">
+                <h4 class="card-title logo">@item.Mesaj</h4>
+                <h5 class="card-title logo">Gönderen: @item.GondericiAd</h5>
+                <div>
+                    <a href="@Url.Action("Indir","Home")" style="float:right; width:40px; margin-top:10px"><i class="fa fa-download"></i></a>
+                    <a href="@Url.Content($"~/images/{item.ResimAd}.png")"  style="float:right; width:40px; margin-top:10px"><i class="fa fa-eye"></i></a> 
+                </div>
+                <div class="container">
+                    <div style="background-color:transparent;border-radius:15px;">
+                        <a href="@Url.Content($"/Kartlar/Duzenle/{item.Id}")"><i class="fas fa-pen-square"></i> Duzenle</a>
+                        <a href="@Url.Content($"/Kartlar/Sil/{item.Id}")"><i class="fas fa-trash"></i> Sil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,63 @@
+﻿@model Kart
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Sil</h2>
+
+<div>
+    <h4>Kart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GondericiAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GondericiAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesaj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesaj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AliciAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AliciAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimAd)
+        </dd>
+
+    </dl>
+
+
+    <h3>Silmek istediğinize emin misiniz?</h3>
+    @using (Html.BeginForm("Sil", "Kartlar", FormMethod.Post))
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn btn-default" /> |
+                    @Html.ActionLink("Geri Dön", "Index")
+                </div>}
+</div>

@@ -1,0 +1,46 @@
+﻿@model Kart
+
+@{
+    ViewBag.Title = "Yeni";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2 class="logo">Yeni Kart Hazırla</h2>
+    <img width="300" src="@Url.Content($"~/images/{@ViewBag.ResimAd}.png")" />
+</div>
+
+
+@using (Html.BeginForm("Yeni", "Kartlar", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(m => m.ResimAd, new { value = $"{ViewBag.ResimAd}" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Baslik, "Başlık :")
+        @Html.TextBoxFor(m => m.Baslik, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Baslik)
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.GondericiAd, "Gönderici Ad :")
+                @Html.TextBoxFor(m => m.GondericiAd, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GondericiAd)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.AliciAd, "Alıcı Ad :")
+                @Html.TextBoxFor(m => m.AliciAd, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.AliciAd)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Mesaj, "Mesaj:")
+        @Html.TextAreaFor(m => m.Mesaj, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Mesaj)
+
+    </div>
+    <button style="margin-left: 25px" type="submit" class="btn btn-danger btn-lg">Kaydet</button>
+}
